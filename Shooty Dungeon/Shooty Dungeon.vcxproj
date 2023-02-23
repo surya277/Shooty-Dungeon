@@ -173,6 +173,7 @@
     <ClInclude Include="..\DragonFly Engine\Vector.h" />
     <ClInclude Include="..\DragonFly Engine\ViewObject.h" />
     <ClInclude Include="..\DragonFly Engine\WorldManager.h" />
+    <ClInclude Include="Enemy.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\DragonFly Engine\Animation.cpp" />
@@ -190,7 +191,6 @@
     <ClCompile Include="..\DragonFly Engine\GameManager.cpp" />
     <ClCompile Include="..\DragonFly Engine\InputManager.cpp" />
     <ClCompile Include="..\DragonFly Engine\LogManager.cpp" />
-    <ClCompile Include="..\DragonFly Engine\main.cpp" />
     <ClCompile Include="..\DragonFly Engine\Manager.cpp" />
     <ClCompile Include="..\DragonFly Engine\Music.cpp" />
     <ClCompile Include="..\DragonFly Engine\Object.cpp" />
@@ -203,6 +203,8 @@
     <ClCompile Include="..\DragonFly Engine\Vector.cpp" />
     <ClCompile Include="..\DragonFly Engine\ViewObject.cpp" />
     <ClCompile Include="..\DragonFly Engine\WorldManager.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="game.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

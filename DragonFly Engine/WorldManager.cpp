@@ -124,7 +124,7 @@ namespace df {
 	void WorldManager::draw() {
 
 		ObjectListIterator li(&m_updates);
-		for (int i = 0; i < MAX_ALTITUDE; i++) {
+		for (int i = 0; i <= MAX_ALTITUDE; i++) {
 			li.first();
 			while (!li.isDone()) {
 				Object* p_temp_o = li.currentObject();

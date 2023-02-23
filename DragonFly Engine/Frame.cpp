@@ -8,6 +8,7 @@ namespace df {
 	Frame::Frame(){
 		m_width = 0;
 		m_height = 0;
+		m_frame_str = "";
 	}
 
 	// Create frame of indicated width and frame
@@ -58,13 +59,13 @@ namespace df {
 			return -1;
 		}
 
-		int x_offset = getWidth() / 2;
-		int y_offset = getHeight() / 2;
+		float x_offset = (float) getWidth() / 2;
+		float y_offset = (float) getHeight() / 2;
 
 		// Draw character by character
 		for (int i = 0; i < m_height; i++) {
 			for (int j = 0; j < m_width; j++) {
-				if (transparency == 0 || m_frame_str[i * getWidth() + j]) {
+				if (transparency == 0 || m_frame_str[i * getWidth() + j] != transparency) {
 					Vector temp_pos(position.getX() + j - x_offset, position.getY() + i - y_offset);
 					DM.drawCh(temp_pos, m_frame_str[i * m_width + j], color);
 				}

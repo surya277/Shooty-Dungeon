@@ -75,7 +75,7 @@ namespace df {
 		text.setStyle(sf::Text::Bold);
 
 		// Scale to right size
-		if (charWidth() > charHeight())
+		if (charWidth() < charHeight())
 			text.setCharacterSize(charWidth() * 2);
 		else
 			text.setCharacterSize(charHeight() * 2);

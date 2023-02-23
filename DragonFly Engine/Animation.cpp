@@ -88,7 +88,7 @@ namespace df {
 
 		// Set counter for next draw()
 		setSlowdownCount(count);
-
+		return 0;
 	}
 
 
