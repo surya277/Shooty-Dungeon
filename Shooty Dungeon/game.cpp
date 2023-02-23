@@ -6,6 +6,7 @@
 
 // Game Includes
 #include "Enemy.h"
+#include "Player.h"
 
 
 void loadResources();
@@ -36,9 +37,11 @@ int main(int argc, char* argv[]) {
 // Load Resources such as sprites, Audio
 void loadResources() {
 	RM.loadSprite("sprites/saucer-spr.txt", "Enemy");
+	RM.loadSprite("sprites/ship-spr.txt", "Player");
 }
 
 
 void populateWorld() {
 	new Enemy;
+	new Player;
 }

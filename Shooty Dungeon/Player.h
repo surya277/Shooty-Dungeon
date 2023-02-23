@@ -3,26 +3,21 @@
 #include "..\DragonFly Engine\Object.h"
 #include "..\DragonFly Engine\EventCollision.h"
 
-class Enemy	: public df::Object
+class Player : public df::Object
 {
 private:
-	int e_health;							// Enemy health
-	int fire_slowdown;						// Fire Slowdown
-	int fire_countdown;						// Fire Countdown
+	int p_health;						// Player Health
+	int fire_slowdown;					// Fire Slowdown
+	int fire_cooldown;					// Fire Countdown
 
 	void hit(const df::EventCollision* p_collision_event);
 
-	void spawnPoint();
-
-	void moveToPlayer();
-
 public:
 	// Constructor
-	Enemy();		
+	Player();
 
 	// Destructor
-	~Enemy();
-
+	~Player();
 
 	// Event Handler
 	// Return 0 if ignored else 1
