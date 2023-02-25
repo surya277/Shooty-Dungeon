@@ -3,10 +3,12 @@
 #include "..\DragonFly Engine\GameManager.h"
 #include "..\DragonFly Engine\LogManager.h"
 #include "..\DragonFly Engine\ResourceManager.h"
+#include "..\DragonFly Engine\WorldManager.h"				//(Added for Enemy Testing)
 
 // Game Includes
 #include "Enemy.h"
 #include "Player.h"
+#include "Bullet.h"
 
 
 void loadResources();
@@ -38,10 +40,12 @@ int main(int argc, char* argv[]) {
 void loadResources() {
 	RM.loadSprite("sprites/saucer-spr.txt", "Enemy");
 	RM.loadSprite("sprites/ship-spr.txt", "Player");
+	RM.loadSprite("sprites/bullet-spr.txt", "Bullet");
 }
 
 
 void populateWorld() {
 	new Enemy;
 	new Player;
+	//new Bullet(df::Vector(10, WM.getBoundary().getVertical() - 7));
 }
