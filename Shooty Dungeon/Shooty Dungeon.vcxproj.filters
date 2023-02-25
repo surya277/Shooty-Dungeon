@@ -114,8 +114,8 @@
     <ClInclude Include="Bullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\DragonFly Engine\BulletPattern.h">
-      <Filter>Header Files\Engine Files</Filter>
+    <ClInclude Include="Reticle.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -212,8 +212,8 @@
     <ClCompile Include="Bullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\DragonFly Engine\BulletPattern.cpp">
-      <Filter>Source Files\Engine Files</Filter>
+    <ClCompile Include="Reticle.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
