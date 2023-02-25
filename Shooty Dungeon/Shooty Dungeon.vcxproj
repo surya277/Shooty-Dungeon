@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClInclude Include="..\DragonFly Engine\Animation.h" />
     <ClInclude Include="..\DragonFly Engine\Box.h" />
+    <ClInclude Include="..\DragonFly Engine\BulletPattern.h" />
     <ClInclude Include="..\DragonFly Engine\Clock.h" />
     <ClInclude Include="..\DragonFly Engine\Color.h" />
     <ClInclude Include="..\DragonFly Engine\DisplayManager.h" />
@@ -180,6 +181,7 @@
   <ItemGroup>
     <ClCompile Include="..\DragonFly Engine\Animation.cpp" />
     <ClCompile Include="..\DragonFly Engine\Box.cpp" />
+    <ClCompile Include="..\DragonFly Engine\BulletPattern.cpp" />
     <ClCompile Include="..\DragonFly Engine\Clock.cpp" />
     <ClCompile Include="..\DragonFly Engine\DisplayManager.cpp" />
     <ClCompile Include="..\DragonFly Engine\Event.cpp" />
