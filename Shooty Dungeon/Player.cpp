@@ -101,8 +101,10 @@ void Player::fire(df::Vector mouse_position) {
 	fire_countdown = fire_slowdown;
 
 	Bullet* bullet = new Bullet(getPosition(), getType());
-
-	bullet->setVelocity(df::Vector(bullet->getVelocity().getX(), (mouse_position.getY() - getPosition().getY()) / (mouse_position.getX() - getPosition().getX())));
+	df::Vector direction;
+	direction = mouse_position - getPosition();
+	direction.normalize();
+	bullet->setDirection(direction);
 }
 
 
