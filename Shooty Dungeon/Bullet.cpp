@@ -15,19 +15,23 @@
 // Have to change Bullet type, sprite, velocity, spawn position based on if player bullet or enemy bullet
 
 
-Bullet::Bullet(df::Vector spawn_pos) {
+Bullet::Bullet(df::Vector spawn_pos,std::string object_type) {
 	
+	owner = object_type;
+
 	// set Bullet sprite
 	setSprite("Bullet");
 
 	// Set Bullet Type
 	setType("Bullet");
 
+	setSolidness(df::SOFT);
+
 	// Set Bullet Velocity
 	setVelocity(df::Vector(1, 0)); // Move 1 space right every game loop.
 
 	// Set starting location, based on object position
-	df::Vector p(spawn_pos.getX() + 3, spawn_pos.getY());
+	df::Vector p(spawn_pos.getX() + 7, spawn_pos.getY());
 	setPosition(p);
 
 }
@@ -64,7 +68,12 @@ void Bullet::out() {
 
 // Handle Collision
 void Bullet::hit(const df::EventCollision* p_collision_event) {
-	if (p_collision_event->getObject1()->getType() == "Enemy" || p_collision_event->getObject1()->getType() == "Enemy") {
+	if (((p_collision_event->getObject1()->getType() == "Enemy" || p_collision_event->getObject1()->getType() == "Enemy")) && (owner == "Player")) {
+		WM.markForDelete(p_collision_event->getObject1());
+		WM.markForDelete(p_collision_event->getObject2());
+	}
+
+	else if (((p_collision_event->getObject1()->getType() == "Player" || p_collision_event->getObject1()->getType() == "Player")) && (owner == "Enemy")) {
 		WM.markForDelete(p_collision_event->getObject1());
 		WM.markForDelete(p_collision_event->getObject2());
 	}

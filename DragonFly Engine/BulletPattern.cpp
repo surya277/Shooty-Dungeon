@@ -17,6 +17,7 @@ namespace df {
 	}
 
 	float* BulletPattern::getPoints() {
-		
+		float i = 1;
+		return &i;
 	}
 }

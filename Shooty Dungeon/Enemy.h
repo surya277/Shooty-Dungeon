@@ -9,12 +9,17 @@ private:
 	int e_health;							// Enemy health
 	int fire_slowdown;						// Fire Slowdown
 	int fire_countdown;						// Fire Countdown
+	
 
 	void hit(const df::EventCollision* p_collision_event);
 
 	void spawnPoint();
 
 	void moveToPlayer();
+
+	void fire(df::Vector target);
+
+	void step();
 
 public:
 	// Constructor

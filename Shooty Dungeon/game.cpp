@@ -45,7 +45,11 @@ void loadResources() {
 
 
 void populateWorld() {
-	new Enemy;
+	//for (int i = 0; i < 5;i++)
+	//	new Enemy;
+
+	Enemy* e = new Enemy();
+	e->setPosition(df::Vector(40, 5));
 	new Player;
 	//new Bullet(df::Vector(10, WM.getBoundary().getVertical() - 7));
 }

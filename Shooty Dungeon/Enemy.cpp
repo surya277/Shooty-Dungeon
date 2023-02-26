@@ -1,6 +1,7 @@
 
 // System Includes
 #include <stdlib.h>	
+#include <time.h>
 
 // Engine Includes
 #include "../DragonFly Engine/WorldManager.h"
@@ -11,7 +12,7 @@
 
 // Game Includes
 #include "Enemy.h"
-#include <time.h>
+#include "Bullet.h"
 
 
 
@@ -27,10 +28,14 @@ Enemy::Enemy() {
 	setAltitude(2);
 
 	// PlaceHolder Velocity (TEST)
-	setSpeed(0.5f);
+	setSpeed(0.25f);
 	//setDirection(df::Vector(-1,0));
 
-	spawnPoint();
+	
+	fire_slowdown = rand() % 40 + 80;
+	fire_countdown = fire_slowdown;
+	
+	//spawnPoint();
 }
 
 
@@ -46,6 +51,7 @@ int Enemy::eventHandler(const df::Event* p_e) {
 	// Move to player each step
 	if (p_e->getType() == df::STEP_EVENT) {
 		moveToPlayer();
+		step();
 	}
 
 	// Get collision event and reduce hp
@@ -57,6 +63,41 @@ int Enemy::eventHandler(const df::Event* p_e) {
 
 	// Out event (Just incase)
 	return 0;
+}
+
+
+// Handle step events
+
+void Enemy::step() {
+	fire_countdown--;
+	if (fire_countdown < 0)
+		fire_countdown = 0;
+	
+
+	df::ObjectList playerList = WM.ObjectsOfType("Player");
+
+	if (playerList.isEmpty()) {
+		LM.writeLog("Player not found\n");
+		return;
+	}
+	df::ObjectListIterator itr(&playerList);
+
+	df::Vector player_pos = itr.currentObject()->getPosition();				// Get Player position
+	df::Vector direction = player_pos - this->getPosition();				// Subtract enemy position from player position to get vector between both objects
+	direction.normalize();
+
+	fire(direction);
+}
+
+
+// Fire Bullet towards Player
+void Enemy::fire(df::Vector target) {
+	if (fire_countdown > 0)
+		return;
+	fire_countdown = fire_slowdown;
+	Bullet* p = new Bullet(getPosition(), getType());
+
+	p->setDirection(target);
 }
 
 

@@ -5,7 +5,7 @@
 // Game Includes
 #include "Player.h"
 #include "Reticle.h"
-
+#include "Bullet.h"
 // Constructor
 Player::Player() {
 	// Set Player sprite
@@ -44,6 +44,11 @@ int Player::eventHandler(const df::Event* p_e) {
 		return 1;
 	}
 
+	if (p_e->getType() == df::MSE_EVENT) {
+		const df::EventMouse* p_mouse_event = dynamic_cast<const df::EventMouse*> (p_e);
+		mouse(p_mouse_event);
+	}
+
 	return 0;
 }
 
@@ -78,5 +83,26 @@ void Player::move(int dx, int dy) {
 	if ((new_pos.getY() > 3) && (new_pos.getY() < WM.getBoundary().getVertical())) WM.moveObject(this, new_pos);
 }
 
+
+// Handle Mouse Events;
+
+void Player::mouse(const df::EventMouse* p_mouse_event) {
+	if ((p_mouse_event->getMouseAction() == df::CLICKED) && (p_mouse_event->getMouseButton() == df::Mouse::LEFT)) {
+		fire(p_mouse_event->getMousePosition());
+	}
+}
+
+// Fire bullets towards clicked position
+
+void Player::fire(df::Vector mouse_position) {
+	if (fire_countdown > 0)
+		return;
+
+	fire_countdown = fire_slowdown;
+
+	Bullet* bullet = new Bullet(getPosition(), getType());
+
+	bullet->setVelocity(df::Vector(bullet->getVelocity().getX(), (mouse_position.getY() - getPosition().getY()) / (mouse_position.getX() - getPosition().getX())));
+}
 
 
