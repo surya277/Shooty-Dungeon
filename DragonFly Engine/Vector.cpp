@@ -61,6 +61,14 @@ namespace df {
 		m_y = m_y * s;
 	}
 
+	float Vector::getDistance(Vector v)
+	{
+		float diffX = m_x - v.m_x;
+		float diffY = m_y - v.m_y;
+
+		return sqrt((diffX * diffX) + (diffY * diffY));
+	}
+
 	// Add 2 Vectors and return new Vector
 	Vector Vector::operator+(const Vector& other) const {
 		Vector v;

@@ -35,6 +35,9 @@ namespace df {
 		// Scale Vector
 		void scale(float s);
 
+		// Get distance between two vectors
+		float getDistance(Vector v);
+
 		// Add two vector and return new Vector
 		Vector operator+(const Vector& other) const;
 

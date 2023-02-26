@@ -119,6 +119,13 @@ void Enemy::moveToPlayer() {
 	//direction.setY(-direction.getY());
 
 	this->setDirection(direction);
+
+	if (getPosition().getDistance(player_pos) < 15.f) {
+		setSpeed(0.f);
+	}
+	else {
+		setSpeed(0.25f);
+	}
 }
 
 
