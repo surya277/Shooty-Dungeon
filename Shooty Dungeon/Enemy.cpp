@@ -19,7 +19,7 @@
 Enemy::Enemy() {
 
 	// Set Enemy sprite
-	setSprite("Enemy");
+	setSprite("Bot");
 	
 	// Set Object Type
 	setType("Enemy");
