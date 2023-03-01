@@ -6,6 +6,8 @@
 #include "Player.h"
 #include "Reticle.h"
 #include "Bullet.h"
+#include "GameOver.h"
+
 // Constructor
 Player::Player() {
 	// Set Player sprite
@@ -27,6 +29,9 @@ Player::Player() {
 
 // Destructor
 Player::~Player() {
+	// Call GameOver Screen
+	new GameOver;
+
 	// Destroy reticle object instance
 	WM.markForDelete(p_reticle);
 }
@@ -73,6 +78,11 @@ void Player::kbd(const df::EventKeyboard* p_keyboard_event) {
 		case df::Keyboard::D: // Move right
 			if (p_keyboard_event->getKeyboardAction() == df::KEY_PRESSED) move(1, 0);
 			break;
+		case df::Keyboard::Q:
+			if (p_keyboard_event->getKeyboardAction() == df::KEY_PRESSED)
+				WM.markForDelete(this);
+			break;
+
 	}
 }
 

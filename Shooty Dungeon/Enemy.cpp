@@ -35,7 +35,7 @@ Enemy::Enemy() {
 	fire_slowdown = rand() % 40 + 80;
 	fire_countdown = fire_slowdown;
 	
-	//spawnPoint();
+	spawnPoint();
 }
 
 
@@ -185,8 +185,15 @@ void Enemy::spawnPoint() {
 
 
 	
-
+	LM.writeLog("horz and vert : %d %d \n", horiz, vert);
 	start_pos.setXY(horiz,vert);
+
+	df::ObjectList collision_list = WM.getCollision(this, start_pos);
+	while (!collision_list.isEmpty()) {
+		start_pos.setX(start_pos.getX() + 3);											// Doesn't Always Work (May cause them to appear in screen)
+		start_pos.setY(start_pos.getY() + 3);
+		collision_list = WM.getCollision(this, start_pos);
+	}
 
 	WM.moveObject(this, start_pos);
 }

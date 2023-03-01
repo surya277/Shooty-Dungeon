@@ -184,6 +184,8 @@
     <ClInclude Include="..\DragonFly Engine\WorldManager.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="GameOver.h" />
+    <ClInclude Include="GameStart.h" />
     <ClInclude Include="Reticle.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>
@@ -219,6 +221,8 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="GameOver.cpp" />
+    <ClCompile Include="GameStart.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Reticle.cpp" />
   </ItemGroup>
