@@ -23,6 +23,8 @@ GameOver::GameOver() {
 	setLocation(df::CENTER_CENTER);
 
 	// Play game over sound
+	//df::Sound* over_sound = RM.getSound("game over");
+	//over_sound->play();
 }
 
 // Override Draw to draw sprite

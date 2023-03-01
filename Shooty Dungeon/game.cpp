@@ -45,6 +45,7 @@ void loadResources() {
 	RM.loadSprite("sprites/spiderbot-spr.txt", "Bot");
 	RM.loadSprite("sprites/gamestart-spr.txt", "GameStart");
 	//RM.loadSprite("sprites/gamestartshoot-spr.txt", "GameStart");
+	//RM.loadSprite("sprites/gamestartshoot2-spr.txt", "GameStart");
 	RM.loadSprite("sprites/gameover-spr.txt", "GameOver");
 }
 

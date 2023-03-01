@@ -10,6 +10,7 @@
 #include "GameStart.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "Points.h"
 
 GameStart::GameStart() {
 	setType("GameStart");
@@ -43,7 +44,7 @@ void GameStart::start() {
 		new Enemy;
 	}
 
-
+	new Points;
 	//start_music->pause();
 
 	// Delete Game Start Object when done

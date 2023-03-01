@@ -9,7 +9,7 @@ class GameOver : public df::ViewObject
 {
 private:
 	int time_to_live;
-	df::Music* stop_music;
+	df::Music* over_music;
 	void step();
 
 public:

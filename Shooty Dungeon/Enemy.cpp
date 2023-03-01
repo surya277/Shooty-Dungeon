@@ -7,12 +7,14 @@
 #include "../DragonFly Engine/WorldManager.h"
 #include "../DragonFly Engine/LogManager.h"
 #include "../DragonFly Engine/EventStep.h"
+#include "../DragonFly Engine/EventView.h"
 #include "../DragonFly Engine/ObjectList.h"
 #include "../DragonFly Engine/ObjectListIterator.h"
 
 // Game Includes
 #include "Enemy.h"
 #include "Bullet.h"
+#include "Points.h"
 
 
 
@@ -42,6 +44,8 @@ Enemy::Enemy() {
 Enemy::~Enemy(){
 
 	// Add points
+	df::EventView ev(POINTS_STRING, 10, true);
+	WM.onEvent(&ev);
 }
 
 
@@ -144,7 +148,12 @@ void Enemy::hit(const df::EventCollision* p_collision_event) {
 	}
 
 
-	// If bullet on Enemy Collision       
+	// If bullet on Enemy Collision 
+	if (((p_collision_event->getObject1()->getType()) == "Bullet") ||
+		((p_collision_event->getObject2()->getType()) == "Bullet")) {
+		//WM.markForDelete(p_collision_event->getObject1());
+		//WM.markForDelete(p_collision_event->getObject2());
+	}
 }
 
 
