@@ -3,10 +3,14 @@
 #include "../DragonFly Engine/LogManager.h"
 #include "../DragonFly Engine/EventOut.h"
 #include "../DragonFly Engine/WorldManager.h"
+#include "../DragonFly Engine/ObjectList.h"
+#include "../DragonFly Engine/ObjectListIterator.h"
+#include "../DragonFly Engine/Vector.h"
 
 
 // Game Includes
 #include "Bullet.h"
+#include "Reticle.h"
 #include "Player.h"
 #include "Enemy.h"
 
@@ -31,7 +35,12 @@ Bullet::Bullet(df::Vector spawn_pos,std::string object_type) {
 	setVelocity(df::Vector(1, 0)); // Move 1 space right every game loop.
 
 	// Set starting location, based on object position
+	df::ObjectList li = WM.ObjectsOfType("Reticle");
+	df::ObjectListIterator itr(&li);
+	df::Vector vReticle = itr.currentObject()->getPosition();
 	df::Vector p(spawn_pos.getX() + 7, spawn_pos.getY());
+	if ((spawn_pos.getX() > vReticle.getX()) && (owner == "Player"))
+		p.setX(spawn_pos.getX() - 7);
 	setPosition(p);
 
 }
