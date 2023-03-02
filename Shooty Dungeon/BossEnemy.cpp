@@ -105,6 +105,7 @@ void BossEnemy::circleFire() {
 		return;
 	fire_countdown = fire_slowdown;
 
+	// Create Domain range (x axis)
 	float d_start = this->getPosition().getX() - b_radius;
 	float d_stop = this->getPosition().getX() + b_radius;
 
@@ -118,21 +119,23 @@ void BossEnemy::circleFire() {
 		temp_pos.setX(d_start + (i * interval));
 		temp_pos.setY(sqrtf(powf(b_radius, 2) - powf(this->getPosition().getX() - temp_pos.getX(), 2)) + this->getPosition().getY());
 		// Spawn bullet
-		Bullet* b = new Bullet(temp_pos, "Enemy");
+		Bullet* b = new Bullet(temp_pos, "BossEnemy");
 		// Set Bullet Direction
 		df::Vector dir(0, 0);
 		dir.setXY(temp_pos.getX() - this->getPosition().getX(), temp_pos.getY() - this->getPosition().getY());
 		dir.normalize();
 		b->setPosition(temp_pos);
 		b->setDirection(dir);
+		b->setSpeed(0.75f);
 
 		// Repeat Process for 2nd Bullet
 		temp_pos.setY(temp_pos.getY() + 2 * (this->getPosition().getY() - temp_pos.getY()));
-		Bullet* b1 = new Bullet(temp_pos, "Enemy");
+		Bullet* b1 = new Bullet(temp_pos, "BossEnemy");
 		dir.setXY(temp_pos.getX() - this->getPosition().getX(), temp_pos.getY() - this->getPosition().getY());
 		dir.normalize();
 		b1->setPosition(temp_pos);
 		b1->setDirection(dir);
+		b1->setSpeed(0.75f);
 
 	}
 

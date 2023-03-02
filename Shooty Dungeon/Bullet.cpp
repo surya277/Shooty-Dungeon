@@ -40,7 +40,7 @@ Bullet::Bullet(df::Vector spawn_pos,std::string object_type) {
 	else if (owner == "BossEnemy")
 	{
 		// set Bullet sprite
-		setSprite("Bullet");
+		setSprite("BossBullet");
 		// Set Bullet Type
 		setType("BossBullet");
 	}

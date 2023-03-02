@@ -49,12 +49,14 @@ void loadResources() {
 	//RM.loadSprite("sprites/gamestartshoot-spr.txt", "GameStart");
 	//RM.loadSprite("sprites/gamestartshoot2-spr.txt", "GameStart");
 	RM.loadSprite("sprites/gameover-spr.txt", "GameOver");
+	RM.loadSprite("sprites/bossbullet-spr.txt", "BossBullet");
 }
 
 
 void populateWorld() {
 	LM.writeLog("Populating World\n");
-
-	new GameStart();
+	new Player;
+	new BossEnemy(4);
+	//new GameStart();
 	
 }
