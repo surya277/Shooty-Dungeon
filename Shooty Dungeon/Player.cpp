@@ -59,9 +59,9 @@ int Player::eventHandler(const df::Event* p_e) {
 
 void Player::kbd(const df::EventKeyboard* p_keyboard_event) {
 	switch (p_keyboard_event->getKey()) {
-		//case df::Keyboard::Q: // Quit game
-		//	if (p_keyboard_event->getKeyboardAction() == df::KEY_PRESSED) WM.markForDelete(this);
-		//	break;
+		case df::Keyboard::Q: // Quit game
+			if (p_keyboard_event->getKeyboardAction() == df::KEY_PRESSED) WM.markForDelete(this);
+			break;
 
 		case df::Keyboard::W: // Move up
 			if (p_keyboard_event->getKeyboardAction() == df::KEY_PRESSED) move(0, -1);
@@ -78,10 +78,7 @@ void Player::kbd(const df::EventKeyboard* p_keyboard_event) {
 		case df::Keyboard::D: // Move right
 			if (p_keyboard_event->getKeyboardAction() == df::KEY_PRESSED) move(1, 0);
 			break;
-		case df::Keyboard::Q:
-			if (p_keyboard_event->getKeyboardAction() == df::KEY_PRESSED)
-				WM.markForDelete(this);
-			break;
+		
 
 	}
 }

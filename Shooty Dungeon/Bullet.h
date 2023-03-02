@@ -13,9 +13,12 @@ private:
 	void out();													// Handle out of bounds event
 	void hit(const df::EventCollision* p_collision_event);
 
+
+	void spawnPos(df::Vector spawn_pos);
 public:
 	Bullet(df::Vector spawn_pos, std::string object_type);	// , std::string bullet_type);
 
 	int eventHandler(const df::Event* p_e);
+
 };
 

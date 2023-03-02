@@ -23,28 +23,53 @@ Bullet::Bullet(df::Vector spawn_pos,std::string object_type) {
 	
 	owner = object_type;
 
-	// set Bullet sprite
-	setSprite("Bullet");
-
-	// Set Bullet Type
-	setType("Bullet");
+	if (owner == "Player")
+	{
+		// set Bullet sprite
+		setSprite("Bullet");
+		// Set Bullet Type
+		setType("PlayerBullet");
+	}
+	else if (owner == "Enemy")
+	{
+		// set Bullet sprite
+		setSprite("Bullet");
+		// Set Bullet Type
+		setType("EnemyBullet");
+	}
+	else if (owner == "BossEnemy")
+	{
+		// set Bullet sprite
+		setSprite("Bullet");
+		// Set Bullet Type
+		setType("BossBullet");
+	}
 
 	setSolidness(df::SOFT);
 
 	// Set Bullet Velocity
 	setVelocity(df::Vector(1, 0)); // Move 1 space right every game loop.
 
-	// Set starting location, based on object position
-	df::ObjectList li = WM.ObjectsOfType("Reticle");
-	df::ObjectListIterator itr(&li);
-	df::Vector vReticle = itr.currentObject()->getPosition();
-	df::Vector p(spawn_pos.getX() + 7, spawn_pos.getY());
-	if ((spawn_pos.getX() > vReticle.getX()) && (owner == "Player"))
-		p.setX(spawn_pos.getX() - 7);
-	setPosition(p);
+	spawnPos(spawn_pos);
 
 }
 
+
+// Set Spawn position of Bullet
+void Bullet::spawnPos(df::Vector spawn_pos) {
+	// Set starting location, based on object position
+	df::Vector p(spawn_pos.getX() + 7, spawn_pos.getY());
+	if (owner == "Player")
+	{
+		df::ObjectList li = WM.ObjectsOfType("Reticle");
+		df::ObjectListIterator itr(&li);
+		df::Vector vReticle = itr.currentObject()->getPosition();
+
+		if ((spawn_pos.getX() > vReticle.getX()) && (owner == "Player"))
+			p.setX(spawn_pos.getX() - 7);
+	}
+	setPosition(p);
+}
 
 // Handle Events
 // Return 0 if ignored, else 1.

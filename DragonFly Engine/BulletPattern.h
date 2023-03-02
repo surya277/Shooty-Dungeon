@@ -2,6 +2,8 @@
 #include "Object.h";
 
 namespace df {
+	
+	const int MAX_BULLET_POINTS = 20;
 
 	class BulletPattern : public Object {
 	private:
@@ -14,7 +16,7 @@ namespace df {
 
 		float getRadius();
 
-		float* getPoints();
+		Vector* getPoints(Vector pos, int num_points);
 
 	};
 }

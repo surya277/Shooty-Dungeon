@@ -155,7 +155,6 @@
   <ItemGroup>
     <ClInclude Include="..\DragonFly Engine\Animation.h" />
     <ClInclude Include="..\DragonFly Engine\Box.h" />
-    <ClInclude Include="..\DragonFly Engine\BulletPattern.h" />
     <ClInclude Include="..\DragonFly Engine\Clock.h" />
     <ClInclude Include="..\DragonFly Engine\Color.h" />
     <ClInclude Include="..\DragonFly Engine\DisplayManager.h" />
@@ -182,6 +181,7 @@
     <ClInclude Include="..\DragonFly Engine\Vector.h" />
     <ClInclude Include="..\DragonFly Engine\ViewObject.h" />
     <ClInclude Include="..\DragonFly Engine\WorldManager.h" />
+    <ClInclude Include="BossEnemy.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameOver.h" />
@@ -193,7 +193,6 @@
   <ItemGroup>
     <ClCompile Include="..\DragonFly Engine\Animation.cpp" />
     <ClCompile Include="..\DragonFly Engine\Box.cpp" />
-    <ClCompile Include="..\DragonFly Engine\BulletPattern.cpp" />
     <ClCompile Include="..\DragonFly Engine\Clock.cpp" />
     <ClCompile Include="..\DragonFly Engine\DisplayManager.cpp" />
     <ClCompile Include="..\DragonFly Engine\Event.cpp" />
@@ -219,6 +218,7 @@
     <ClCompile Include="..\DragonFly Engine\Vector.cpp" />
     <ClCompile Include="..\DragonFly Engine\ViewObject.cpp" />
     <ClCompile Include="..\DragonFly Engine\WorldManager.cpp" />
+    <ClCompile Include="BossEnemy.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="game.cpp" />

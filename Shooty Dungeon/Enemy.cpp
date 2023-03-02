@@ -33,7 +33,7 @@ Enemy::Enemy() {
 	setSpeed(0.25f);
 	//setDirection(df::Vector(-1,0));
 
-	
+
 	fire_slowdown = rand() % 40 + 80;
 	fire_countdown = fire_slowdown;
 	
@@ -164,7 +164,7 @@ void Enemy::spawnPoint() {
 
 	int world_horiz = (int)WM.getBoundary().getHorizontal();
 	int world_vert = (int)WM.getBoundary().getVertical();
-	srand(time(NULL));
+
 	enum arr { UP, DOWN, LEFT, RIGHT };
 	int random = rand() % 4;
 
@@ -172,21 +172,21 @@ void Enemy::spawnPoint() {
 	switch (random) {
 	case UP:
 		horiz = std::rand() % (world_horiz - 4) + 4.0f;
-		vert = 0 - std::rand() % (world_vert + 3);
+		vert = 0 - std::rand() % (world_vert*2 + 3);
 		break;
 
 	case DOWN:
 		horiz = std::rand() % (world_horiz - 4) + 4.0f;
-		vert = world_vert + std::rand() % (world_vert + 3);
+		vert = world_vert + std::rand() % (world_vert*2 + 3);
 		break;
 
 	case LEFT:
-		horiz = 0 - std::rand() % (world_horiz - 4) + 4.0f;
+		horiz = 0 - std::rand() % (world_horiz*2 - 4) + 4.0f;
 		vert = std::rand() % (world_vert - 4) + 4;
 		break;
 
 	case RIGHT:
-		horiz = world_horiz + std::rand() % (world_horiz + 4) + 4.0f;
+		horiz = world_horiz + std::rand() % (world_horiz*2 + 4) + 4.0f;
 		vert = std::rand() % (world_vert - 4) + 4.0f;
 		break;
 

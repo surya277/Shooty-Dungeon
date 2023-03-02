@@ -4,12 +4,14 @@
 #include "..\DragonFly Engine\LogManager.h"
 #include "..\DragonFly Engine\ResourceManager.h"
 #include "..\DragonFly Engine\WorldManager.h"				//(Added for Enemy Testing)
+#include "..\DragonFly Engine\BulletPattern.h"
 
 // Game Includes
 #include "GameStart.h"
 #include "Enemy.h"
 #include "Player.h"
 #include "Bullet.h"
+#include "BossEnemy.h"
 
 
 void loadResources();
@@ -54,13 +56,5 @@ void populateWorld() {
 	LM.writeLog("Populating World\n");
 
 	new GameStart();
-	/*
-	for (int i = 0; i < 5;i++)
-		new Enemy;
-
-	Enemy* e = new Enemy();
-	e->setPosition(df::Vector(40, 5));
-	new Player;
-	*/
-	//new Bullet(df::Vector(10, WM.getBoundary().getVertical() - 7));
+	
 }
