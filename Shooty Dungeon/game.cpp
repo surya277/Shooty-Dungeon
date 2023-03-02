@@ -46,17 +46,19 @@ void loadResources() {
 	RM.loadSprite("sprites/bullet-spr.txt", "Bullet");
 	RM.loadSprite("sprites/spiderbot-spr.txt", "Bot");
 	RM.loadSprite("sprites/gamestart-spr.txt", "GameStart");
-	//RM.loadSprite("sprites/gamestartshoot-spr.txt", "GameStart");
+	//RM.loadSprite("sprites/gamestartshoot-spr.txt", "GameStart1");
 	//RM.loadSprite("sprites/gamestartshoot2-spr.txt", "GameStart");
 	RM.loadSprite("sprites/gameover-spr.txt", "GameOver");
 	RM.loadSprite("sprites/bossbullet-spr.txt", "BossBullet");
+
+	RM.loadMusic("audio/title-music.wav", "TitleMusic");
 }
 
 
 void populateWorld() {
 	LM.writeLog("Populating World\n");
-	new Player;
-	new BossEnemy(4);
-	//new GameStart();
+	//new Player;
+	//new BossEnemy(4);
+	new GameStart();
 	
 }

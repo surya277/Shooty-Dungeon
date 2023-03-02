@@ -23,8 +23,8 @@ GameStart::GameStart() {
 
 
 	// Play start music.
-	//start_music = RM.getMusic("start music");
-	//playMusic();
+	start_music = RM.getMusic("TitleMusic");
+	playMusic();
 }
 
 
@@ -45,7 +45,7 @@ void GameStart::start() {
 	}
 
 	new Points;
-	//start_music->pause();
+	start_music->pause();
 
 	// Delete Game Start Object when done
 	WM.markForDelete(this);

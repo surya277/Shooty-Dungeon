@@ -86,7 +86,6 @@ void BossEnemy::hit(const df::EventCollision* p_collision_event) {
 
 
 // Handle step events
-
 void BossEnemy::step() {
 	fire_countdown--;
 	if (fire_countdown < 0)
@@ -141,6 +140,7 @@ void BossEnemy::circleFire() {
 
 }
 
+// Reduce Boss Health
 void BossEnemy::reduceHealth() {
 	e_health = e_health - 5;
 
