@@ -8,6 +8,7 @@
 
 // Game Includes
 #include "GameOver.h"
+#include "GameStart.h"
 
 
 GameOver::GameOver() {
@@ -15,7 +16,7 @@ GameOver::GameOver() {
 
 	// set GameOver sprite
 	if (setSprite("GameOver") == 0)
-		time_to_live = getAnimation().getSprite()->getFrameCount() * 15;
+		time_to_live = getAnimation().getSprite()->getFrameCount() * 8;
 	else
 		time_to_live = 0;
 
@@ -58,5 +59,5 @@ void GameOver::step() {
 
 GameOver::~GameOver() {
 	WM.markForDelete(this);
-	GM.setGameOver();
+	new GameStart;
 }

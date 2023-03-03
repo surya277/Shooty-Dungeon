@@ -92,8 +92,11 @@ void EnemyWaveManager::clearObjects()
 	for (i.first(); !i.isDone(); i.next())
 	{
 		df::Object* p_object = i.currentObject();
-		if (p_object->getType() == "Player" || p_object->getType() == "Enemy" || p_object->getType() == "BossEnemy" || p_object->getType() == "ViewObject") WM.markForDelete(p_object);
+		if (p_object->getType() == "Player" || p_object->getType() == "Enemy" || p_object->getType() == "BossEnemy" || p_object->getType() == "ViewObject" || p_object->getType() == "PlayerBullet" || p_object->getType() == "EnemyBullet" || p_object->getType() == "BossBullet") WM.markForDelete(p_object);
 	}
+	
+	wave_music->pause();
+	boss_music->pause();
 }
 
 void EnemyWaveManager::updatePlayerHealth(int health)

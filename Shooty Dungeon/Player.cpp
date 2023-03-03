@@ -2,6 +2,7 @@
 // Engine Includes
 #include "../DragonFly Engine/WorldManager.h"
 #include "../DragonFly Engine/LogManager.h"
+#include "../DragonFly Engine/EventStep.h"
 
 // Game Includes
 #include "Player.h"
@@ -37,6 +38,9 @@ Player::Player() {
 	p_health_view->setValue(health);
 
 	EWM.updatePlayerHealth(health);
+
+	fire_countdown = 0;
+	fire_slowdown = 10;
 }
 
 
@@ -57,6 +61,14 @@ Player::~Player() {
 // Return 0 if ignored else 1
 
 int Player::eventHandler(const df::Event* p_e) {
+
+	if (p_e->getType() == df::STEP_EVENT) {
+		// Reduce fire countdown every step
+		fire_countdown--;
+		if (fire_countdown < 0) fire_countdown = 0;
+	}
+
+
 	// Handle keyboard events
 	if (p_e->getType() == df::KEYBOARD_EVENT)
 	{
