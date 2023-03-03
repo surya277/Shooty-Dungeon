@@ -41,7 +41,7 @@ int main(int argc, char* argv[]) {
 
 // Load Resources such as sprites, Audio
 void loadResources() {
-	RM.loadSprite("sprites/saucer-spr.txt", "Enemy");
+	//RM.loadSprite("sprites/saucer-spr.txt", "Enemy");
 	RM.loadSprite("sprites/player-spr.txt", "Player");
 	RM.loadSprite("sprites/bullet-spr.txt", "Bullet");
 	RM.loadSprite("sprites/spiderbot-spr.txt", "Bot");
