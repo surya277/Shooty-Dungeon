@@ -18,6 +18,8 @@ private:
 	df::Music* boss_music;
 
 public:
+	~EnemyWaveManager();
+
 	static EnemyWaveManager& getInstance();
 
 	int startUp();

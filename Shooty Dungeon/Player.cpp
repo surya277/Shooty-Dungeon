@@ -65,9 +65,16 @@ int Player::eventHandler(const df::Event* p_e) {
 	}
 	
 	if (p_e->getType() == DAMAGE_EVENT) {
-		health--;
-		// Update health view object
-		p_health_view->setValue(health);
+		if (health <= 1) {
+			WM.markForDelete(this);
+		}
+		else {
+			health--;
+			// Update health view object
+			p_health_view->setValue(health);
+		}
+
+		
 	}
 
 	return 0;

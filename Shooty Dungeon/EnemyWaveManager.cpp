@@ -21,6 +21,11 @@ EnemyWaveManager::EnemyWaveManager()
 	boss_music = RM.getMusic("BossMusic");
 }
 
+EnemyWaveManager::~EnemyWaveManager()
+{
+	new GameOver;
+}
+
 EnemyWaveManager& EnemyWaveManager::getInstance()
 {
 	static EnemyWaveManager waveManager;
@@ -38,7 +43,7 @@ int EnemyWaveManager::eventHandler(const df::Event* p_e)
 {
 	if (p_e->getType() == df::STEP_EVENT) {
 		if (enemy_count < 1) spawnEnemies();
-		if (wave_count == 3 && enemy_count < 1) new GameOver;
+		if (wave_count == 3 && enemy_count < 1) WM.markForDelete(this);
 	}
 	
 	return 0;
