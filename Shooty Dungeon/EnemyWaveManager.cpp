@@ -95,8 +95,11 @@ void EnemyWaveManager::clearObjects()
 		if (p_object->getType() == "Player" || p_object->getType() == "Enemy" || p_object->getType() == "BossEnemy" || p_object->getType() == "ViewObject" || p_object->getType() == "PlayerBullet" || p_object->getType() == "EnemyBullet" || p_object->getType() == "BossBullet") WM.markForDelete(p_object);
 	}
 	
-	wave_music->pause();
-	boss_music->pause();
+	enemy_count = 0;
+	wave_count = 0;
+
+	wave_music->stop();
+	boss_music->stop();
 }
 
 void EnemyWaveManager::updatePlayerHealth(int health)
