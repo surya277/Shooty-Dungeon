@@ -11,18 +11,19 @@
 #include "BossEnemy.h"
 #include "Points.h"
 #include "Bullet.h"
+#include "EnemyWaveManager.h"
 
 BossEnemy::BossEnemy(int init_radius) {
 
 	// Set Boss Enemy sprite;
-	setSprite("Bot");
+	setSprite("BossBot");
 
 	// Set Object Type
 	setType("BossEnemy");
 
 	// Set Altitude of Enemy
 	setAltitude(2);
-	setPosition(df::Vector(50, 10));
+	setPosition(df::Vector(WM.getBoundary().getHorizontal() / 2.0f, WM.getBoundary().getVertical() / 2.0f));
 
 	b_radius = init_radius;
 
@@ -36,6 +37,9 @@ BossEnemy::~BossEnemy() {
 	// Add points
 	df::EventView ev(POINTS_STRING, 100, true);
 	WM.onEvent(&ev);
+
+	// Modify enemy count for wave manager
+	EWM.modifyEnemyCount(-1);
 }
 
 
@@ -69,7 +73,8 @@ void BossEnemy::hit(const df::EventCollision* p_collision_event) {
 	// If Player on Enemy Collision
 	if (((p_collision_event->getObject1()->getType()) == "Player") ||
 		((p_collision_event->getObject2()->getType()) == "Player")) {
-		return;
+		WM.markForDelete(p_collision_event->getObject1());
+		WM.markForDelete(p_collision_event->getObject2());
 	}
 
 

@@ -10,11 +10,13 @@
 #include "../DragonFly Engine/EventView.h"
 #include "../DragonFly Engine/ObjectList.h"
 #include "../DragonFly Engine/ObjectListIterator.h"
+#include "../DragonFly Engine/Utility.h"
 
 // Game Includes
 #include "Enemy.h"
 #include "Bullet.h"
 #include "Points.h"
+#include "EnemyWaveManager.h"
 
 
 
@@ -46,6 +48,9 @@ Enemy::~Enemy(){
 	// Add points
 	df::EventView ev(POINTS_STRING, 10, true);
 	WM.onEvent(&ev);
+
+	// Modify enemy count for wave manager
+	EWM.modifyEnemyCount(-1);
 }
 
 
@@ -90,7 +95,9 @@ void Enemy::step() {
 	df::Vector direction = player_pos - this->getPosition();				// Subtract enemy position from player position to get vector between both objects
 	direction.normalize();
 
-	fire(direction);
+	if (df::Utility::boxIntersectsBox(df::Utility::getWorldBox(this), WM.getBoundary())) {
+		fire(direction);
+	}
 }
 
 
@@ -171,23 +178,23 @@ void Enemy::spawnPoint() {
 	float horiz, vert;
 	switch (random) {
 	case UP:
-		horiz = std::rand() % (world_horiz - 4) + 4.0f;
-		vert = 0 - std::rand() % (world_vert*2 + 3);
+		horiz = std::rand() % (world_horiz - 2) + 2.0f;
+		vert = 0 - std::rand() % (world_vert + 2);
 		break;
 
 	case DOWN:
-		horiz = std::rand() % (world_horiz - 4) + 4.0f;
-		vert = world_vert + std::rand() % (world_vert*2 + 3);
+		horiz = std::rand() % (world_horiz - 2) + 2.0f;
+		vert = world_vert + std::rand() % (world_vert + 3);
 		break;
 
 	case LEFT:
-		horiz = 0 - std::rand() % (world_horiz*2 - 4) + 4.0f;
-		vert = std::rand() % (world_vert - 4) + 4;
+		horiz = 0 - std::rand() % (world_horiz - 2) + 2.0f;
+		vert = std::rand() % (world_vert - 2) + 2;
 		break;
 
 	case RIGHT:
-		horiz = world_horiz + std::rand() % (world_horiz*2 + 4) + 4.0f;
-		vert = std::rand() % (world_vert - 4) + 4.0f;
+		horiz = world_horiz + std::rand() % (world_horiz + 2) + 2.0f;
+		vert = std::rand() % (world_vert - 2) + 2.0f;
 		break;
 
 	}

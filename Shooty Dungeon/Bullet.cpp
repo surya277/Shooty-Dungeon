@@ -13,6 +13,7 @@
 #include "Reticle.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "EventDamage.h"
 
 
 // Can make bullet class common for both Player and enemy
@@ -33,7 +34,7 @@ Bullet::Bullet(df::Vector spawn_pos,std::string object_type) {
 	else if (owner == "Enemy")
 	{
 		// set Bullet sprite
-		setSprite("Bullet");
+		setSprite("EnemyBullet");
 		// Set Bullet Type
 		setType("EnemyBullet");
 	}
@@ -102,13 +103,14 @@ void Bullet::out() {
 
 // Handle Collision
 void Bullet::hit(const df::EventCollision* p_collision_event) {
-	if (((p_collision_event->getObject1()->getType() == "Enemy" || p_collision_event->getObject1()->getType() == "Enemy")) && (owner == "Player")) {
+	if (((p_collision_event->getObject1()->getType() == "Enemy" || p_collision_event->getObject2()->getType() == "Enemy")) && (owner == "Player")) {
 		WM.markForDelete(p_collision_event->getObject1());
 		WM.markForDelete(p_collision_event->getObject2());
 	}
 
-	else if (((p_collision_event->getObject1()->getType() == "Player" || p_collision_event->getObject1()->getType() == "Player")) && (owner == "Enemy")) {
-		WM.markForDelete(p_collision_event->getObject1());
-		WM.markForDelete(p_collision_event->getObject2());
+	else if (((p_collision_event->getObject1()->getType() == "Player" || p_collision_event->getObject2()->getType() == "Player")) && ((owner == "Enemy") || (owner == "BossEnemy"))) {
+		WM.markForDelete(this);
+		EventDamage ed;
+		WM.onEvent(&ed);
 	}
 }

@@ -11,6 +11,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Points.h"
+#include "EnemyWaveManager.h"
 
 GameStart::GameStart() {
 	setType("GameStart");
@@ -36,16 +37,11 @@ void GameStart::start() {
 	// Create Player
 	Player* p1 = new Player;
 
-	// Set View following
-
-
 	// Spawn Enemies
-	for (int i = 0; i < 5; i++) {
-		new Enemy;
-	}
+	EWM.startUp();
 
 	new Points;
-	start_music->pause();
+	start_music->stop();
 
 	// Delete Game Start Object when done
 	WM.markForDelete(this);

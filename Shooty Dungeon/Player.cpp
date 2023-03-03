@@ -1,12 +1,14 @@
 
 // Engine Includes
 #include "../DragonFly Engine/WorldManager.h"
+#include "../DragonFly Engine/LogManager.h"
 
 // Game Includes
 #include "Player.h"
 #include "Reticle.h"
 #include "Bullet.h"
 #include "GameOver.h"
+#include "EventDamage.h"
 
 // Constructor
 Player::Player() {
@@ -24,6 +26,14 @@ Player::Player() {
 	// Create reticle object and draw the aiming reticle
 	p_reticle = new Reticle();
 	p_reticle->draw();
+
+	health = 5;
+
+	p_health_view = new df::ViewObject;
+	p_health_view->setLocation(df::TOP_LEFT);
+	p_health_view->setViewString("Health");
+	p_health_view->setColor(df::YELLOW);
+	p_health_view->setValue(health);
 }
 
 
@@ -52,6 +62,12 @@ int Player::eventHandler(const df::Event* p_e) {
 	if (p_e->getType() == df::MSE_EVENT) {
 		const df::EventMouse* p_mouse_event = dynamic_cast<const df::EventMouse*> (p_e);
 		mouse(p_mouse_event);
+	}
+	
+	if (p_e->getType() == DAMAGE_EVENT) {
+		health--;
+		// Update health view object
+		p_health_view->setValue(health);
 	}
 
 	return 0;

@@ -42,23 +42,23 @@ int main(int argc, char* argv[]) {
 // Load Resources such as sprites, Audio
 void loadResources() {
 	RM.loadSprite("sprites/saucer-spr.txt", "Enemy");
-	RM.loadSprite("sprites/ship-spr.txt", "Player");
+	RM.loadSprite("sprites/player-spr.txt", "Player");
 	RM.loadSprite("sprites/bullet-spr.txt", "Bullet");
 	RM.loadSprite("sprites/spiderbot-spr.txt", "Bot");
+	RM.loadSprite("sprites/cocoonbot-spr.txt", "BossBot");
 	RM.loadSprite("sprites/gamestart-spr.txt", "GameStart");
 	//RM.loadSprite("sprites/gamestartshoot-spr.txt", "GameStart1");
 	//RM.loadSprite("sprites/gamestartshoot2-spr.txt", "GameStart");
 	RM.loadSprite("sprites/gameover-spr.txt", "GameOver");
 	RM.loadSprite("sprites/bossbullet-spr.txt", "BossBullet");
+	RM.loadSprite("sprites/enemy-bullet-spr.txt", "EnemyBullet");
 
 	RM.loadMusic("audio/title-music.wav", "TitleMusic");
+	RM.loadMusic("audio/wave-music.wav", "WaveMusic");
+	RM.loadMusic("audio/boss-music.wav", "BossMusic");
 }
 
 
 void populateWorld() {
-	LM.writeLog("Populating World\n");
-	//new Player;
-	//new BossEnemy(4);
 	new GameStart();
-	
 }
