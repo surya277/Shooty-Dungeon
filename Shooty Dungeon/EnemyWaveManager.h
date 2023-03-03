@@ -17,9 +17,9 @@ private:
 	df::Music* wave_music;
 	df::Music* boss_music;
 
-public:
-	~EnemyWaveManager();
+	int player_health;
 
+public:
 	static EnemyWaveManager& getInstance();
 
 	int startUp();
@@ -31,4 +31,8 @@ public:
 	void modifyEnemyCount(int count);
 
 	int getEnemyCount() const;
+
+	void clearObjects();
+
+	void updatePlayerHealth(int health);
 };

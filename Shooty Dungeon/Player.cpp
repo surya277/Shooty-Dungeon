@@ -9,6 +9,7 @@
 #include "Bullet.h"
 #include "GameOver.h"
 #include "EventDamage.h"
+#include "EnemyWaveManager.h"
 
 // Constructor
 Player::Player() {
@@ -34,11 +35,16 @@ Player::Player() {
 	p_health_view->setViewString("Health");
 	p_health_view->setColor(df::YELLOW);
 	p_health_view->setValue(health);
+
+	EWM.updatePlayerHealth(health);
 }
 
 
 // Destructor
 Player::~Player() {
+	// Shut down wave manager
+	EWM.clearObjects();
+
 	// Call GameOver Screen
 	new GameOver;
 
@@ -65,16 +71,18 @@ int Player::eventHandler(const df::Event* p_e) {
 	}
 	
 	if (p_e->getType() == DAMAGE_EVENT) {
-		if (health <= 1) {
+		health--;
+
+		if (health < 1) {
 			WM.markForDelete(this);
 		}
 		else {
-			health--;
 			// Update health view object
 			p_health_view->setValue(health);
 		}
 
-		
+		// Send health value to wave manager
+		EWM.updatePlayerHealth(health);
 	}
 
 	return 0;

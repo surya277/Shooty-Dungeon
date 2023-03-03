@@ -34,6 +34,8 @@ void GameStart::start() {
 	//WM.setBoundary(df::Box(df::Vector(0, 0), DM.getHorizontal() * 2, DM.getVertical() * 2));
 	//WM.setView(df::Box(df::Vector(0, 20), DM.getHorizontal(), DM.getVertical()));
 
+	start_music->stop();
+
 	// Create Player
 	Player* p1 = new Player;
 
@@ -41,7 +43,6 @@ void GameStart::start() {
 	EWM.startUp();
 
 	new Points;
-	start_music->stop();
 
 	// Delete Game Start Object when done
 	WM.markForDelete(this);
